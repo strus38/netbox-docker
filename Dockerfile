@@ -1,5 +1,5 @@
 ARG FROM
-FROM ${FROM} as builder
+FROM ubi8/ubi as builder
 
 RUN apk add --no-cache \
       bash \
