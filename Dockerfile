@@ -57,11 +57,10 @@ RUN apk add --no-cache \
       postgresql-libs \
       ttf-ubuntu-font-family
 
+COPY --from=builder  netbox /opt/netbox
 WORKDIR /opt
 
 COPY --from=builder /install /usr/local
-
-COPY --from=builder  netbox /opt/netbox
 
 COPY docker/configuration.docker.py /opt/netbox/netbox/netbox/configuration.py
 COPY docker/gunicorn_config.py /etc/netbox/
