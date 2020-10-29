@@ -61,7 +61,7 @@ WORKDIR /opt
 
 COPY --from=builder /install /usr/local
 
-COPY netbox /opt/netbox
+COPY --from=builder  netbox /opt/netbox
 
 COPY docker/configuration.docker.py /opt/netbox/netbox/netbox/configuration.py
 COPY docker/gunicorn_config.py /etc/netbox/
