@@ -35,9 +35,9 @@ RUN pip install --prefix="/install" --no-warn-script-location \
       social-auth-app-django \
       social-auth-core
 
-RUN git clone https://github.com/netbox-community/netbox.git -b v2.9.7 && mv netbox .netbox
-COPY .netbox/requirements.txt /
-RUN pip install --prefix="/install" --no-warn-script-location -r /requirements.txt
+RUN git clone https://github.com/netbox-community/netbox.git -b v2.9.7
+# COPY .netbox/requirements.txt /
+RUN pip install --prefix="/install" --no-warn-script-location -r netbox/requirements.txt
 
 ###
 # Main stage
@@ -61,7 +61,7 @@ WORKDIR /opt
 
 COPY --from=builder /install /usr/local
 
-COPY .netbox /opt/netbox
+COPY netbox /opt/netbox
 
 COPY docker/configuration.docker.py /opt/netbox/netbox/netbox/configuration.py
 COPY docker/gunicorn_config.py /etc/netbox/
