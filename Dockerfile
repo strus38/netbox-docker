@@ -1,4 +1,4 @@
-FROM ubi8/ubi as builder
+FROM python:3.7-alpine as builder
 
 RUN apk add --no-cache \
       bash \
@@ -38,7 +38,7 @@ RUN pip install --prefix="/install" --no-warn-script-location -r /requirements.t
 # Main stage
 ###
 
-FROM ubi8/ubi as main
+FROM python:3.7-alpine as main
 
 RUN apk add --no-cache \
       bash \
