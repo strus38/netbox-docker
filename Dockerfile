@@ -28,7 +28,8 @@ RUN pip install --prefix="/install" --no-warn-script-location \
 # django_auth_ldap is required for ldap
       django_auth_ldap \
 # django-storages was introduced in 2.7 and is optional
-      django-storages
+      django-storages \
+      git+https://github.com/Peter-Slump/django-keycloak.git
 
 ARG NETBOX_PATH
 COPY ${NETBOX_PATH}/requirements.txt /
