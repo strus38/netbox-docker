@@ -31,8 +31,8 @@ RUN pip install --prefix="/install" --no-warn-script-location \
       django-storages \
 # Try different backend for auth
       mozilla-django-oidc \
-      git+https://github.com/Peter-Slump/django-keycloak.git
-      social-auth-app-django
+      git+https://github.com/Peter-Slump/django-keycloak.git \
+      social-auth-app-django \
       social-auth-core
 
 RUN git clone https://github.com/netbox-community/netbox.git -b v2.9.7 && mv netbox .netbox
