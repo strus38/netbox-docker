@@ -1,4 +1,3 @@
-ARG FROM
 FROM ubi8/ubi as builder
 
 RUN apk add --no-cache \
@@ -32,15 +31,13 @@ RUN pip install --prefix="/install" --no-warn-script-location \
       mozilla-django-oidc \
       git+https://github.com/Peter-Slump/django-keycloak.git
 
-ARG NETBOX_PATH
-COPY ${NETBOX_PATH}/requirements.txt /
+COPY .netbox/requirements.txt /
 RUN pip install --prefix="/install" --no-warn-script-location -r /requirements.txt
 
 ###
 # Main stage
 ###
 
-ARG FROM
 FROM ubi8/ubi as main
 
 RUN apk add --no-cache \
@@ -59,8 +56,7 @@ WORKDIR /opt
 
 COPY --from=builder /install /usr/local
 
-ARG NETBOX_PATH
-COPY ${NETBOX_PATH} /opt/netbox
+COPY .netbox /opt/netbox
 
 COPY docker/configuration.docker.py /opt/netbox/netbox/netbox/configuration.py
 COPY docker/gunicorn_config.py /etc/netbox/
