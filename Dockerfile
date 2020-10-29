@@ -55,7 +55,8 @@ RUN apk add --no-cache \
       libressl \
       libxslt \
       postgresql-libs \
-      ttf-ubuntu-font-family
+      ttf-ubuntu-font-family \
+      git
 
 WORKDIR /opt
 
