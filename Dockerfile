@@ -41,7 +41,7 @@ RUN pip install --prefix="/install" --no-warn-script-location -r /requirements.t
 ###
 
 ARG FROM
-FROM ${FROM} as main
+FROM ubi8/ubi as main
 
 RUN apk add --no-cache \
       bash \
