@@ -29,6 +29,7 @@ RUN pip install --prefix="/install" --no-warn-script-location \
       django_auth_ldap \
 # django-storages was introduced in 2.7 and is optional
       django-storages \
+      mozilla-django-oidc \
       git+https://github.com/Peter-Slump/django-keycloak.git
 
 ARG NETBOX_PATH
