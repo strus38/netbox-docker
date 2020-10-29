@@ -11,7 +11,8 @@ RUN apk add --no-cache \
       libffi-dev \
       libxslt-dev \
       openldap-dev \
-      postgresql-dev
+      postgresql-dev \
+      git
 
 WORKDIR /install
 
